@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} detail page {% endblock %}
+{% block content %}
+<div class="container mt-4 mb-3">
+    <div class="card border border-2 border-success rounded-4" style=" width: 800px;">
+        <div class="row g-0">
+            <div class="col-md-5">
+                <img src="{{ p.image.url }}" class="img-fluid rounded-3 mt-3  ms-2 mb-3"  height="320px" width="300px"  alt="category image">
+            </div>
+            <div class="col-md-7">
+                <div class="card-body">
+                    <h2 class="card-title">{{ p.name }}</h2>
+                    <p class="card-text" style="text-align: justify; line-height: 2;">{{ p.desc }}</p>
+                    <p class="card-text fw-bold">Price: {{ p.price }}</p>
+                    <p class="card-text">Stock: {{ p.stock }}</p>
+                    {% if user.is_superuser == True %} <!-- checking the user is admin or not -->
+                        {% if p.stock > 0 %} <!-- checking the product have stock or not-->
+                            <h3> Product In stock </h3>
+                            <a href="{% url 'admin:index' %}" class="btn btn-secondary mt-4" style="width:300px;">
+                                Add stock
+                            </a>
+                        {% else %} <!-- checking the product is out of stock-->
+                             <h3> Product Out of Stock </h3>
+                             <a href="{% url 'admin:index' %}" class="btn btn-secondary mt-4" style="width:300px;">
+                                 Add stock
+                             </a>
+                        {% endif %}
+                    {% else %}
+                        {% if p.stock > 0 %} <!-- checking there is stock or it is out of stock when user login -->
+                            <a href="{% url 'cart:addtocart' p.id %}" class="btn btn-success fw-bold">Add to Cart</a>
+                        {% else %}
+                            <div class="text-danger">Out Of Stock </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--http://127.0.0.1:6777/detail/2/-->
+<!--<br><br><br><br><br>-->
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Product page {% endblock %}
+{% block content %}
+<div class="container-fluid  " style="margin-bottom-100px;" xmlns="http://www.w3.org/1999/html">
+    <img src="{{ c.image.url }}" height="450px" width="100%">
+    <center> <h1 class="mt-4"> {{c.name}} </h1></center>
+    <p class="collection_desc mx-5 "> {{c.desc}} </p>
+</div>
+
+<!-- card code start -->
+<div class="container-fluid">
+    <div class="row mt-4 mb-3">
+        {% for i in p %}
+        <div class="col-sm-3 ">
+            <div class="card" style="width: 18rem;">
+             <img src="{{ i.image.url }}" class="card-img-top" alt="category image" height="200px" width="100px">
+            <div class="card-body">
+                <h5 class="card-title mt-2 mb-2 text-uppercase fw-bold text-center text-success">{{ i.name }}</h5>
+<!--                <p class="card-text mx-1 " style="height: 150px; overflow: hidden;" >{# {{i.desc}} #}</p>-->
+                <center><a href="{% url 'shop:detail' i.id %}" class="btn btn-success fw-bolder">Details</a></center>
+             </div>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- card code ends -->
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} search page {% endblock %}
+{% block content %}
+{# p :{{p}} #}
+<div class="container-fluid">
+    <h3 class="text-center mt-2"> You have searched for <span class="text-danger">{{q}}</span></h3>
+</div>
+<!-- card code start -->
+<div class="container-fluid">
+    <div class="row mt-4 mb-3">
+        {% for i in p %}
+        <div class="col-sm-3 ">
+            <div class="card mt-2 mb-2" style="width: 18rem;">
+             <img src="{{ i.image.url }}" class="card-img-top" alt="category image" height="200px" width="100px">
+            <div class="card-body">
+                <h5 class="card-title mt-2 mb-2 text-uppercase fw-bold text-center text-success">{{ i.name }}</h5>
+<!--                <p class="card-text mx-1 " style="height: 150px; overflow: hidden;" >{# {{i.desc}} #}</p>-->
+                <center><a href="{% url 'shop:detail' i.id %}" class="btn btn-success fw-bolder">Details</a></center>
+             </div>
+        </div>
+        </div>
+<!--        if there is no result the empty code will work and show no result found -->
+        {% empty %}
+<h3 class="text-center mt-5 text-danger"> No result found</h3>
+        {% endfor %}
+    </div>
+</div>
+<!-- card code ends -->
+ {# it will display the keyword we searched  {{q}} #}
+{% endblock %}

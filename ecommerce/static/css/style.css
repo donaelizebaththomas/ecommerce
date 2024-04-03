@@ -1,0 +1,69 @@
+/***************** body ******************/
+body
+    {
+        color:#000000;
+         margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+        background-color:#c7fda8e3; /* selected the color using color picker */
+        /* font style details - the google link connected in the base page */
+          font-family: "Archivo", sans-serif;
+          font-optical-sizing: auto;
+          font-weight:300;
+          font-style: normal;
+          font-variation-settings:
+            "wdth" 100;
+
+    }
+    /********** navbar **************/
+.navbar
+    {
+        background-color:#c5dccae8;
+    }
+    .dropdown-item:active {
+    background-color:#c7fda8e3;
+    color:green;
+    }
+    /************* card ******************/
+    .card-body
+    {
+    background-color:#ffecb35c;
+    }
+    .btn-success:hover {
+    color: green;
+    background-color: #c5dccae8;
+    }
+     .card-text,.collection_desc {
+          text-align: justify;
+          }
+    /****************** footer ***********************/
+
+.content {
+    flex-grow: 1; /* Allow content to grow and fill available space */
+    padding: 20px; /* Adjust padding as needed */
+}
+
+.footer {
+    background-color: #c5dccae8;
+    padding: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+/********************* Registration form ***********************/
+.container {
+            max-width: 600px;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .btn-submit {
+            width: 100%;
+        }
+/*************************     ******************************/
+
+.btn-danger:hover {
+    color: black;
+    background-color: grey;
+    }
